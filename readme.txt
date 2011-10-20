@@ -4,12 +4,11 @@ Tags: facebook, thumbnails, facebook thumbnails, fb thumbnails, fb, fb thumbs, m
 Requires at least: 2.5
 Tested up to: 3.2.1
 
-
-Customize thumbnails and descriptions generated on Facebook when someone links to a post/page on your Wordpress site. Fb Thumbnail Config lets you to control exactly how your posts/pages appear on Facebook.
+Customize thumbnails and descriptions generated on Facebook when your post/page is shared. This plugin lets you to control exactly how your posts/pages appear on Facebook.
 
 == Description ==
 
-Customize thumbnails and descriptions generated on Facebook when someone links to a post/page on your Wordpress site. Fb Thumbnail Config lets you to control exactly how your posts/pages appear on Facebook. FB Thumbnail Config adds a box to the 'Edit Post' and 'Edit Page' screens in Wordpress which allow for a single specified image to be used for the Facebook Thumbnail. Additionally the description used on Facebook can be customized. New versions might include more sophisticated entity modifications such as adding the meta tags required for a link on facebook to include video or music file functionality.
+Customize thumbnails and descriptions generated on Facebook when your post/page is shared. This plugin lets you to control exactly how your posts/pages appear on Facebook.FB Thumbnail Config adds a box to the 'Edit Post' and 'Edit Page' screens in Wordpress which allow for a single specified image to be used for the Facebook Thumbnail. Additionally the description used on Facebook can be customized. New versions might include more sophisticated entity modifications such as adding the meta tags required for a link on facebook to include video or music file functionality.
 
 Features:
 
