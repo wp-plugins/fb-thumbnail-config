@@ -15,10 +15,7 @@
  * Include Rilwsi's Meta Boxes
  */
 // get path to plugin
-//$x = WP_PLUGIN_URL.'/'.str_replace(basename( __FILE__),"",plugin_basename(__FILE__));
-$x = '';
-include( $x.'meta-box.php' );
-
+include( 'meta-box.php' );
 
 /**
  * Set up 100 by 100 thumbnail size for fb
@@ -27,7 +24,6 @@ if ( function_exists( 'add_theme_support' ) )
 	add_theme_support( 'post-thumbnails' );
 if ( function_exists( 'add_image_size' ) )
 	add_image_size( 'fb-thumb', 100, 100 );
-
 
 /** 
  * BEGIN Meta Boxes
@@ -45,32 +41,31 @@ $meta_boxes[] = array(
 	'priority' => 'low',
 	'fields' => array(
 		array(
-			'name' => 'Add Image',
-			'desc' => 'Upload or select ONE image and use "Insert into Post" to select - Works best with one image - use no more than 3.',
+			'name' => 'Add Image:',
+			'desc' => 'Copy and paste the url to the image you want to use here. For best results use a 100 by 100 pixel image.',
 			'id' => $prefix . 'the_thumb',
-			'type' => 'image'
+			'type' => 'text'
 		),
 		array(
-			'name' => 'Use Thumbnail',
+			'name' => 'Use Thumbnail:',
 			'desc' => 'Check to use the thubmnail you entered above as the Facebook thumbnail (leave unchecked to let Facebook auto-generate).',
 			'id' => $prefix . 'use_thumb',
 			'type' => 'checkbox'
 		),
 		array(
-			'name' => 'Enter Description',
+			'name' => 'Description:',
 			'desc' => 'Enter the description shown on Facebook. Keep your description under 43 words - anything over will be ignored.',
 			'id' => $prefix . 'the_desc',
 			'type' => 'textarea'
 		),
 		array(
-			'name' => 'Use Description',
+			'name' => 'Use Description:',
 			'desc' => 'Check to use the description you entered above as the Facebook description (leave unchecked to let Facebook auto-generate).',
 			'id' => $prefix . 'use_desc',
 			'type' => 'checkbox'
 		)
 	)
 );
-
 
 // create the meta boxes 
 foreach ($meta_boxes as $meta_box)
@@ -83,7 +78,6 @@ foreach ($meta_boxes as $meta_box)
 /**
  *  Add meta data Facebook is looking for to head of post/page
  */
-
 function fb_thumbnail_config_header_action()
 {
 	// add meta for type, url, and title
@@ -96,6 +90,7 @@ function fb_thumbnail_config_header_action()
 	global $post;
 	$prefix = 'fbtc_';
 	$use_thumb = get_post_meta($post->ID, $prefix.'use_thumb', true);
+	$the_desc = get_post_meta($post->ID, $prefix.'the_thumb',true );
 	$use_desc = get_post_meta($post->ID, $prefix.'use_desc', true);
 	$the_desc = get_post_meta($post->ID, $prefix.'the_desc',true );
 
@@ -105,23 +100,17 @@ function fb_thumbnail_config_header_action()
 
 	// add meta for image
 	if($use_thumb) {
-		$attachs = get_posts(array(
-			'numberposts' => -1,
-			'post_type' => 'attachment',
-			'post_parent' => $post->ID,
-			'post_mime_type' => 'image',
-			'output' => ARRAY_A
-		));
-
-		if (!empty($attachs)) {
-			foreach ($attachs as $att) {
-				$src = wp_get_attachment_image_src($att->ID, array(100,100));
-				$src = $src[0];
-				
-				// add meta
-				echo "<meta property=\"og:image\" content=\"$src\"/>\n";
-			}
-		}
+		echo "<meta property=\"og:image\" content=\"$the_thumb\"/>\n";
 	}
 }
 add_action('wp_head', 'fb_thumbnail_config_header_action');
+
+/**
+ *  Style Meta Box in Admin menu
+ */
+function admin_register_head() {
+    $siteurl = get_option('siteurl');
+    $url = $siteurl . '/wp-content/plugins/fb-thumbnail-config' . '/fb-thumbnail-config.css';
+    echo "<link rel='stylesheet' type='text/css' href='$url' />\n";
+}
+add_action('admin_head', 'admin_register_head');

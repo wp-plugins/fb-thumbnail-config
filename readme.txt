@@ -4,7 +4,7 @@ Tags: facebook, thumbnails, facebook thumbnails, fb thumbnails, fb, fb thumbs, m
 Requires at least: 2.5
 Tested up to: 3.2.1
 
-Customize thumbnails and descriptions generated on Facebook when your post/page is shared. This plugin lets you to control exactly how your posts/pages appear on Facebook.
+Customize thumbnails and descriptions generated on Facebook when your post/page is shared. This plugin lets you to control your presentation Facebook.
 
 == Description ==
 
