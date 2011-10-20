@@ -5,6 +5,7 @@
  * Description: FB Thumbnail Config lets you to control exactly how your posts/pages appear on Facebook. Customize thumbnails and descriptions generated on Facebook when someone links to a post/page on your Wordpress site. 
  * Author: Dean Verleger
  * Version: 1.0
+ * Stable Tag: 1.0
  * Author URI: http://www.silversquareinc.com
  *
  * @license GNU General Public License
