@@ -80,19 +80,20 @@ foreach ($meta_boxes as $meta_box)
  */
 function fb_thumbnail_config_header_action()
 {
-	// add meta for type, url, and title
-	if($use_thumb || $use_desc) {
-?><meta property="og:type" content="article" />
-<meta property="og:url" content="http://<?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]; ?>" />
-<meta property="og:title" content="<?php wp_title('|', 1, 'right'); bloginfo('name'); ?>"/><?php
-	}
-
 	global $post;
 	$prefix = 'fbtc_';
 	$use_thumb = get_post_meta($post->ID, $prefix.'use_thumb', true);
 	$the_desc = get_post_meta($post->ID, $prefix.'the_thumb',true );
 	$use_desc = get_post_meta($post->ID, $prefix.'use_desc', true);
 	$the_desc = get_post_meta($post->ID, $prefix.'the_desc',true );
+	
+	// add meta for type, url, and title
+	if($use_thumb || $use_desc):
+	?><meta property="og:type" content="article" />
+<meta property="og:url" content="http://<?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]; ?>" />
+<meta property="og:title" content="<?php wp_title('|', 1, 'right'); bloginfo('name'); ?>"/>
+
+	<?php endif;
 
 	// add meta for description
 	if($use_desc && $the_desc)
