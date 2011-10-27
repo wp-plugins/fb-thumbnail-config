@@ -83,7 +83,7 @@ function fb_thumbnail_config_header_action()
 	global $post;
 	$prefix = 'fbtc_';
 	$use_thumb = get_post_meta($post->ID, $prefix.'use_thumb', true);
-	$the_desc = get_post_meta($post->ID, $prefix.'the_thumb',true );
+	$the_thumb = get_post_meta($post->ID, $prefix.'the_thumb',true );
 	$use_desc = get_post_meta($post->ID, $prefix.'use_desc', true);
 	$the_desc = get_post_meta($post->ID, $prefix.'the_desc',true );
 	
